@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihat | AI Web & Automation</title>
+    <meta name="description" content="Kiçik bizneslər üçün AI chatbotlu saytlar və avtomatlaşdırma.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+    <div class="container nav-inner">
+        <a href="#" class="logo">nihat<span>.dev</span></a>
+        <nav class="nav-links">
+            <a href="#services" data-i18n="nav_services">Xidmətlər</a>
+            <a href="#projects" data-i18n="nav_projects">Layihələr</a>
+            <a href="#pricing" data-i18n="nav_pricing">Qiymətlər</a>
+            <a href="#contact" data-i18n="nav_contact">Əlaqə</a>
+        </nav>
+        <button class="lang-btn" id="langBtn" aria-label="Change language">EN</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <span class="badge" data-i18n="hero_badge">Yeni sifarişlər qəbul edilir</span>
+        <h1 data-i18n="hero_title">Biznesiniz üçün <em>AI chatbotlu</em> saytlar və avtomatlaşdırma</h1>
+        <p class="lead" data-i18n="hero_lead">Müştəri suallarını 24/7 cavablandıran, müraciətləri avtomatik Telegram və ya e-poçtunuza göndərən sürətli saytlar qururam.</p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Pulsuz məsləhət al</a>
+            <a href="#projects" class="btn btn-ghost" data-i18n="hero_cta2">İşlərimə bax</a>
+        </div>
+        <ul class="stack">
+            <li>HTML / CSS / JS</li><li>Claude AI</li><li>Claude Code</li><li>n8n</li><li>Telegram Bot</li>
+        </ul>
+    </div>
+</section>
+
+<section id="services" class="section">
+    <div class="container">
+        <h2 data-i18n="services_title">Nə edirəm</h2>
+        <div class="grid-3">
+            <article class="card">
+                <div class="icon">🌐</div>
+                <h3 data-i18n="s1_title">Biznes saytı</h3>
+                <p data-i18n="s1_text">Restoran, salon, kurs mərkəzi üçün mobilə uyğun, sürətli sayt. Menyu, qiymətlər, xəritə, WhatsApp düyməsi.</p>
+            </article>
+            <article class="card">
+                <div class="icon">🤖</div>
+                <h3 data-i18n="s2_title">AI chatbot</h3>
+                <p data-i18n="s2_text">Saytınızda tez-tez verilən suallara (qiymət, iş saatı, ünvan) avtomatik cavab verən köməkçi.</p>
+            </article>
+            <article class="card">
+                <div class="icon">⚡</div>
+                <h3 data-i18n="s3_title">Avtomatlaşdırma</h3>
+                <p data-i18n="s3_text">Formadan gələn müraciət dərhal Telegram-a, Google Sheets-ə və e-poçta düşür. Heç bir müştəri itmir.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section alt">
+    <div class="container">
+        <h2 data-i18n="projects_title">Layihələr</h2>
+        <div class="grid-3">
+            <article class="project">
+                <div class="thumb thumb-1">CINEVERSE</div>
+                <div class="project-body">
+                    <h3>CINEVERSE</h3>
+                    <p data-i18n="p1_text">Film portalı: janr filtri, axtarış, qeydiyyat modalları və ödəniş interfeysi (demo).</p>
+                    <span class="tag">HTML · CSS · JS</span>
+                </div>
+            </article>
+            <article class="project">
+                <div class="thumb thumb-2">🤖 Chatbot</div>
+                <div class="project-body">
+                    <h3 data-i18n="p2_title">Salon chatbotu</h3>
+                    <p data-i18n="p2_text">Sağ aşağı küncdəki köməkçini sınayın — bu saytın özündə işləyən demo.</p>
+                    <span class="tag">JS · AI</span>
+                </div>
+            </article>
+            <article class="project soon">
+                <div class="thumb thumb-3">⚡ Form → Telegram</div>
+                <div class="project-body">
+                    <h3 data-i18n="p3_title">Müraciət avtomatlaşdırması</h3>
+                    <p data-i18n="p3_text">Hazırlanır: sayt formasından Telegram bota avtomatik bildiriş.</p>
+                    <span class="tag" data-i18n="soon">Tezliklə</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 data-i18n="process_title">Necə işləyirik</h2>
+        <ol class="steps">
+            <li><strong data-i18n="st1_t">1. Söhbət</strong><span data-i18n="st1">15 dəqiqəlik pulsuz zəng — ehtiyacınızı öyrənirəm.</span></li>
+            <li><strong data-i18n="st2_t">2. Dizayn</strong><span data-i18n="st2">2–3 gün ərzində ilk versiyanı göstərirəm.</span></li>
+            <li><strong data-i18n="st3_t">3. Düzəlişlər</strong><span data-i18n="st3">Rəyinizə əsasən dəyişikliklər edirəm.</span></li>
+            <li><strong data-i18n="st4_t">4. Yayım</strong><span data-i18n="st4">Sayt onlayn olur, istifadəni izah edirəm.</span></li>
+        </ol>
+    </div>
+</section>
+
+<section id="pricing" class="section alt">
+    <div class="container">
+        <h2 data-i18n="pricing_title">Paketlər</h2>
+        <div class="grid-3">
+            <article class="price">
+                <h3>Start</h3>
+                <p class="amount" data-i18n="pr1_amount">150 AZN-dən</p>
+                <ul>
+                    <li data-i18n="pr1_a">1 səhifəlik sayt</li>
+                    <li data-i18n="pr1_b">Mobil uyğunluq</li>
+                    <li data-i18n="pr1_c">WhatsApp düyməsi</li>
+                </ul>
+            </article>
+            <article class="price featured">
+                <span class="ribbon" data-i18n="popular">Populyar</span>
+                <h3>Pro</h3>
+                <p class="amount" data-i18n="pr2_amount">350 AZN-dən</p>
+                <ul>
+                    <li data-i18n="pr2_a">5 səhifəyə qədər</li>
+                    <li data-i18n="pr2_b">AI chatbot</li>
+                    <li data-i18n="pr2_c">Form → Telegram</li>
+                </ul>
+            </article>
+            <article class="price">
+                <h3>Custom</h3>
+                <p class="amount" data-i18n="pr3_amount">Razılaşma ilə</p>
+                <ul>
+                    <li data-i18n="pr3_a">Xüsusi avtomatlaşdırma</li>
+                    <li data-i18n="pr3_b">CRM / Sheets inteqrasiyası</li>
+                    <li data-i18n="pr3_c">Aylıq dəstək</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <div class="container contact">
+        <div>
+            <h2 data-i18n="contact_title">Layihəniz var?</h2>
+            <p data-i18n="contact_text">Yazın, 24 saat ərzində cavab verirəm.</p>
+            <div class="contact-links">
+                <a href="https://wa.me/994552453207" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp · +994 55 245 32 07</a>
+                <a href="https://github.com/nihatdadaszade2-create" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+            </div>
+        </div>
+        <form id="contactForm" class="form">
+            <input type="text" name="name" required data-i18n-ph="f_name" placeholder="Adınız">
+            <input type="text" name="contact" required data-i18n-ph="f_contact" placeholder="Telefon və ya e-poçt">
+            <textarea name="message" rows="4" required data-i18n-ph="f_msg" placeholder="Nə lazımdır?"></textarea>
+            <button type="submit" class="btn btn-primary" data-i18n="f_send">Göndər</button>
+            <p class="form-note" id="formNote"></p>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">© 2026 nihat.dev</div>
+</footer>
+
+<!-- Demo chatbot -->
+<button class="chat-toggle" id="chatToggle" aria-label="Chat">💬</button>
+<div class="chat" id="chat" hidden>
+    <div class="chat-head">
+        <span data-i18n="bot_name">Glow Salon köməkçisi (demo)</span>
+        <button id="chatClose" aria-label="Close">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-quick" id="chatQuick"></div>
+    <form class="chat-input" id="chatForm">
+        <input type="text" id="chatText" autocomplete="off" data-i18n-ph="bot_ph" placeholder="Sualınızı yazın...">
+        <button type="submit">➤</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
