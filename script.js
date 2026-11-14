@@ -35,6 +35,9 @@ const i18n = {
 
 let lang = 'az';
 try { lang = localStorage.getItem('lang') || 'az'; } catch (e) {}
+// ?lang=en linki ilə açılanda dil birbaşa seçilir (Upwork üçün)
+const urlLang = new URLSearchParams(location.search).get('lang');
+if (urlLang === 'en' || urlLang === 'az') lang = urlLang;
 
 // Orijinal AZ mətnlərini yadda saxla
 document.querySelectorAll('[data-i18n]').forEach(el => { i18n.az[el.dataset.i18n] = el.innerHTML; });
