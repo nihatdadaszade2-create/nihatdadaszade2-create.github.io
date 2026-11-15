@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dəmlik — Səhər yeməyi və qəhvə, Bakı</title>
+<meta name="description" content="Azərbaycan səhər yeməyi, specialty qəhvə və desertlər. Menyu və masa rezervasiyası.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Tünd yaşıl (çay yarpağı) + armudu stəkan qəhvəyi-narıncı + kağız. */
+:root{
+  --bg:#f4f1ea; --paper:#fbfaf6; --green:#1e3a2f; --green-2:#2c5242; --amber:#d9822b; --amber-2:#f0a24a;
+  --ink:#1b1f1c; --muted:#66706a; --line:#ddd6c8;
+  --display:'Syne', 'Segoe UI', system-ui, sans-serif; --body:'Inter', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.wrap>*{min-width:0}
+h1,h2,h3{font-family:var(--display);line-height:1.02;letter-spacing:-.5px;text-wrap:balance}
+.eyebrow{font-size:.76rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--amber)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
+.demo-pill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--green);color:#cfe0d6;font-size:.78rem;padding:7px 14px;border-radius:999px;white-space:nowrap}
+.demo-pill b{color:var(--amber-2)}
+
+.nav{position:sticky;top:0;z-index:50;background:var(--green);color:#f4f1ea}
+.nav .wrap{height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.5rem;display:flex;align-items:center;gap:10px}
+.logo svg{width:26px;height:30px}
+.nav-links{display:flex;gap:26px;font-size:.92rem;color:#cfe0d6;font-weight:500}
+.nav-links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:700 .95rem var(--body);padding:14px 24px;border-radius:12px;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-amber{background:var(--amber);color:#1b1208}
+.btn-amber:hover{background:var(--amber-2)}
+.btn-line{background:transparent;border:1.5px solid currentColor}
+.nav .btn{padding:10px 18px}
+
+.hero{background:var(--green);color:#f4f1ea;padding:64px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(2.2rem,8vw,6.4rem);overflow-wrap:break-word;font-weight:800;margin:14px 0 18px}
+.hero h1 span{color:var(--amber-2)}
+.hero .lead{color:#cfe0d6;font-size:1.1rem;max-width:30rem}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 56px}
+.open{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);padding:6px 12px;border-radius:999px;font-size:.85rem}
+.open i{width:8px;height:8px;border-radius:50%;background:#6fd18e}
+.open.closed i{background:#e8826b}
+
+/* armudu stəkan */
+.glass-wrap{display:flex;justify-content:center;align-items:flex-end;gap:26px;padding-bottom:0}
+.glass{width:120px;height:190px;position:relative}
+.glass .body{position:absolute;inset:0 0 26px;clip-path:polygon(8% 0,92% 0,80% 32%,70% 50%,80% 72%,90% 100%,10% 100%,20% 72%,30% 50%,20% 32%);background:linear-gradient(180deg,rgba(255,255,255,.25) 0 10%,#b5541a 10% 100%)}
+.glass .shine{position:absolute;left:26%;top:16%;width:8px;height:60%;border-radius:8px;background:rgba(255,255,255,.35);transform:rotate(6deg)}
+.glass .saucer{position:absolute;left:-20px;right:-20px;bottom:0;height:26px;border-radius:50%;background:#e9e2d2;box-shadow:inset 0 -6px 0 #cfc5b0}
+.steam{position:absolute;top:-58px;left:50%;width:36px;height:56px;transform:translateX(-50%)}
+.steam span{position:absolute;bottom:0;width:6px;height:40px;border-radius:6px;background:linear-gradient(transparent,rgba(255,255,255,.5));animation:rise 3s ease-in-out infinite}
+.steam span:nth-child(1){left:4px}.steam span:nth-child(2){left:15px;animation-delay:.8s}.steam span:nth-child(3){left:26px;animation-delay:1.6s}
+@keyframes rise{0%{transform:translateY(10px) scaleY(.6);opacity:0}40%{opacity:1}100%{transform:translateY(-20px) scaleY(1.1);opacity:0}}
+.lemon{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle,#fff6b0 0 30%,#f2d64b 31% 84%,#e9c32a 85%);margin-bottom:20px;box-shadow:inset 0 0 0 4px #fff6b0}
+
+.ticker{background:var(--amber);color:#1b1208;font-family:var(--display);font-weight:700;overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding:12px 0;animation:tick 30s linear infinite}
+.ticker span{margin:0 22px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+section{padding:84px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800}
+.sec-head p{color:var(--muted);max-width:26rem}
+.mtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.mt{background:none;border:0;padding:8px 14px;border-radius:10px;font:600 .95rem var(--body);cursor:pointer;color:var(--muted)}
+.mt[aria-selected="true"]{background:var(--green);color:#fff}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:18px 0;border-bottom:1px dashed var(--line)}
+.dish h3{font-family:var(--body);font-weight:700;font-size:1.02rem;letter-spacing:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dish .p{font-family:var(--display);font-weight:700;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.dish p{grid-column:1/-1;color:var(--muted);font-size:.88rem}
+.lbl{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;background:#e7efe9;color:var(--green-2);text-transform:uppercase;letter-spacing:.5px}
+.lbl.hot{background:#fde6cf;color:#9a4e0a}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px}
+.feat .ic{font-size:1.8rem}
+.feat h3{font-size:1.35rem;margin:10px 0 6px}
+.feat p{color:var(--muted);font-size:.92rem}
+
+.reserve{background:var(--green);color:#f4f1ea;border-radius:30px;padding:42px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}
+.reserve h2{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800}
+.reserve .lead{color:#cfe0d6;margin:12px 0 22px}
+.info{list-style:none;display:grid;gap:10px;color:#e3ece6;font-size:.95rem}
+.info b{color:var(--amber-2)}
+form.rv{background:var(--paper);color:var(--ink);border-radius:22px;padding:26px;display:grid;gap:14px}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;font-weight:700;color:var(--muted)}
+.field input,.field select{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:500 .95rem var(--body);background:#fff;color:var(--ink);width:100%}
+.field input:focus,.field select:focus{outline:none;border-color:var(--amber)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ppl{display:flex;align-items:center;gap:12px}
+.ppl button{width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:700 1.2rem var(--body);cursor:pointer}
+.ppl output{font-family:var(--display);font-size:1.6rem;min-width:2ch;text-align:center}
+.err{color:#b23a1f;font-size:.85rem;min-height:1.2em;font-weight:600}
+.zones{display:flex;gap:8px;flex-wrap:wrap}
+.zone{border:1.5px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;font:600 .85rem var(--body);cursor:pointer}
+.zone[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+
+footer.site{padding:40px 0 90px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(30,58,47,.6);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.modal-box{background:var(--paper);border-radius:22px;padding:28px;max-width:440px;width:100%;animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.95);opacity:0}}
+.modal-box h3{font-size:1.7rem}
+.modal-box pre{white-space:pre-wrap;font:500 .9rem var(--body);background:var(--bg);border-radius:12px;padding:14px;margin:14px 0}
+.note{color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hero .wrap,.reserve{grid-template-columns:1fr}
+  .menu{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .reserve{padding:26px}
+  section{padding:60px 0}
+  .hero-cta{margin-bottom:30px}
+}
+@media (max-width:480px){.row2{grid-template-columns:1fr}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-pill">Demo sayt · hazırladı <b>nihat.dev</b></div>
+
+<header class="nav"><div class="wrap">
+  <a href="#" class="logo"><svg viewBox="0 0 26 30" aria-hidden="true"><path d="M3 2h20l-3 9-3 4 3 5 3 8H3l3-8 3-5-3-4z" fill="#d9822b"/><path d="M1 28h24" stroke="#f4f1ea" stroke-width="2.5" stroke-linecap="round"/></svg>Dəmlik</a>
+  <nav class="nav-links"><a href="#menyu">Menyu</a><a href="#niye">Niyə biz</a><a href="#rezerv">Rezervasiya</a></nav>
+  <a href="#rezerv" class="btn btn-amber">Masa sifariş et</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="open" id="open"><i></i><span id="openT">Açığıq</span></span>
+    <h1>Səhər <span>çayı</span>, şəhərin ən dadlı başlanğıcı</h1>
+    <p class="lead">Ənənəvi Azərbaycan səhər yeməyi, armudu stəkanda dəmli çay və specialty qəhvə. İçərişəhərə 5 dəqiqəlik yolda.</p>
+    <div class="hero-cta"><a href="#rezerv" class="btn btn-amber">Masa sifariş et →</a><a href="#menyu" class="btn btn-line">Menyuya bax</a></div>
+  </div>
+  <div class="glass-wrap" aria-hidden="true">
+    <div class="lemon"></div>
+    <div class="glass"><div class="steam"><span></span><span></span><span></span></div><div class="body"></div><div class="shine"></div><div class="saucer"></div></div>
+  </div>
+</div></section>
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<section id="menyu"><div class="wrap">
+  <div class="sec-head"><h2>Menyu</h2><p>Qiymətlər AZN ilə. Bütün çörəklər səhər öz sobamızda bişir.</p></div>
+  <div class="mtabs" role="tablist" id="mtabs"></div>
+  <div class="menu" id="menu"></div>
+</div></section>
+
+<section id="niye" style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>Niyə Dəmlik?</h2></div>
+  <div class="features">
+    <div class="feat"><div class="ic">🫖</div><h3>Samovar çayı</h3><p>Odunla qızdırılan samovarda dəmlənir, mürəbbə və limonla gəlir.</p></div>
+    <div class="feat"><div class="ic">🥚</div><h3>Kənd məhsulu</h3><p>Yumurta, kərə yağı və pendir hər səhər Quba və Şamaxı kəndlərindən gəlir.</p></div>
+    <div class="feat"><div class="ic">💻</div><h3>İş üçün rahat</h3><p>Sürətli Wi-Fi, hər masada rozetka və sakit ikinci mərtəbə.</p></div>
+  </div>
+</div></section>
+
+<section id="rezerv" style="padding-top:0"><div class="wrap">
+  <div class="reserve">
+    <div>
+      <span class="eyebrow">Rezervasiya</span>
+      <h2>Masanı əvvəlcədən saxla</h2>
+      <p class="lead">Həftəsonu səhərlər çox dolu oluruq — masanı 1 dəqiqəyə ayır.</p>
+      <ul class="info">
+        <li>📍 <b>Ünvan:</b> Neftçilər prospekti, İçərişəhər yaxınlığı</li>
+        <li>🕗 <b>Hər gün:</b> 08:00–23:00 · səhər yeməyi 15:00-dək</li>
+        <li>📞 <b>Telefon:</b> +994 50 000 00 00</li>
+      </ul>
+    </div>
+    <form class="rv" id="rv" novalidate>
+      <div class="field"><label>Neçə nəfər?</label><div class="ppl"><button type="button" id="minus" aria-label="Azalt">−</button><output id="cnt">2</output><button type="button" id="plus" aria-label="Artır">+</button></div></div>
+      <div class="row2">
+        <div class="field"><label for="d">Tarix</label><input type="date" id="d"></div>
+        <div class="field"><label for="t">Saat</label><select id="t"></select></div>
+      </div>
+      <div class="field"><label>Yer seçimi</label><div class="zones" id="zones"></div></div>
+      <div class="row2">
+        <div class="field"><label for="nm">Ad</label><input id="nm" autocomplete="name" placeholder="Məs. Fərid"></div>
+        <div class="field"><label for="ph">Telefon</label><input id="ph" type="tel" autocomplete="tel" placeholder="050 123 45 67"></div>
+      </div>
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn btn-amber" type="submit">Masanı rezerv et</button>
+    </form>
+  </div>
+</div></section>
+
+<footer class="site"><div class="wrap"><span>© 2026 Dəmlik — demo layihə · Bakı</span><span>Sayt: nihat.dev</span></div></footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mtl">
+  <div class="modal-box"><h3 id="mtl">Masa rezerv olundu ☕</h3>
+    <p class="note">Real saytda bu rezervasiya avtomatik olaraq kafenin WhatsApp-ına göndərilir:</p>
+    <pre id="mx"></pre><p class="note">Bu demo saytdır — mesaj heç yerə göndərilmədi.</p>
+    <div style="margin-top:16px"><button class="btn btn-amber" id="mc" type="button">Bağla</button></div>
+  </div>
+</div>
+
+<script>
+const M={
+ 'Səhər yeməyi':[['Kənd səhər yeməyi','Yumurta, pendir, kərə yağı, bal, qaymaq, tərəvəz, təndir çörəyi',18,'2 nəfərlik'],['Pomidor-yumurta','Qızardılmış pomidor, kənd yumurtası, göyərti',8],['Qayğanaq','Ballı və ya pendirli',7],['Şakşuka','Bibər, pomidor, yumurta, feta',9,'yeni'],['Sırniki','Xama və moruq mürəbbəsi ilə',8]],
+ 'Çay':[['Samovar çayı (dəmlik)','Limon, mürəbbə və şəkər ilə — 2-3 nəfər',10,'populyar'],['Kəklikotu çayı','Dağ kəklikotu ilə',6],['Zəncəfil-limon','İsti, ballı',6],['Armudu stəkan çay','Tək stəkan',2]],
+ 'Qəhvə':[['Espresso','Etiopiya Yirgacheffe',4],['Flat white','İkiqat ristretto, süd',6],['Raf qəhvəsi','Vanil, qaymaq',7,'populyar'],['Matcha latte','Yaponiya matçası',8]],
+ 'Desert':[['Paxlava','Ev üsulu, qoz və bal',5],['Şəkərbura','Bayram dadı, il boyu',4],['San Sebastian','Yanmış çizkeyk',8,'yeni'],['Mürəbbə dəsti','Ağ gilas, əncir, qoz',6]]
+};
+const keys=Object.keys(M),mt=document.getElementById('mtabs'),mn=document.getElementById('menu');
+mt.innerHTML=keys.map((k,i)=>`<button class="mt" role="tab" aria-selected="${i===0}" data-k="${k}">${k}</button>`).join('');
+const show=k=>mn.innerHTML=M[k].map(([n,d,p,l])=>`<div class="dish"><h3>${n}${l?` <span class="lbl ${l==='populyar'?'hot':''}">${l}</span>`:''}</h3><span class="p">${p} ₼</span><p>${d}</p></div>`).join('');
+mt.onclick=e=>{const b=e.target.closest('.mt');if(!b)return;mt.querySelectorAll('.mt').forEach(x=>x.setAttribute('aria-selected',x===b));show(b.dataset.k)};
+show(keys[0]);
+const words=['Samovar çayı','Kənd səhər yeməyi','Specialty qəhvə','Təndir çörəyi','Ev paxlavası','Pulsuz Wi-Fi'];
+document.getElementById('tick').innerHTML=[...words,...words].map(w=>`<span>✦ ${w}</span>`).join('');
+
+// open status
+const now=new Date(),mins=now.getHours()*60+now.getMinutes(),op=mins>=480&&mins<1380;
+const o=document.getElementById('open');document.getElementById('openT').textContent=op?'İndi açığıq · 23:00-dək':'Bağlıyıq · 08:00-da açılırıq';if(!op)o.classList.add('closed');
+
+// reservation
+let ppl=2;const cnt=document.getElementById('cnt');
+document.getElementById('minus').onclick=()=>{ppl=Math.max(1,ppl-1);cnt.textContent=ppl};
+document.getElementById('plus').onclick=()=>{ppl=Math.min(12,ppl+1);cnt.textContent=ppl};
+const d=document.getElementById('d'),t=document.getElementById('t');const iso=x=>`${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;
+d.min=iso(now);d.value=iso(now);
+const fillT=()=>{t.innerHTML='';const isToday=d.value===iso(now);for(let h=8;h<23;h++)for(const m of[0,30]){if(isToday&&h*60+m<=mins+30)continue;t.innerHTML+=`<option>${String(h).padStart(2,'0')}:${m?'30':'00'}</option>`}
+  if(!t.options.length)t.innerHTML='<option value="">Bu gün boş vaxt yoxdur — sabahı seçin</option>'};
+d.onchange=fillT;fillT();
+const zn=['Zal','Terras','2-ci mərtəbə (sakit)'];let zone=zn[0];const zEl=document.getElementById('zones');
+zEl.innerHTML=zn.map((z,i)=>`<button type="button" class="zone" aria-pressed="${i===0}">${z}</button>`).join('');
+zEl.onclick=e=>{const b=e.target.closest('.zone');if(!b)return;zEl.querySelectorAll('.zone').forEach(x=>x.setAttribute('aria-pressed',x===b));zone=b.textContent};
+document.getElementById('rv').addEventListener('submit',e=>{e.preventDefault();const err=document.getElementById('err');
+  const nm=document.getElementById('nm').value.trim(),ph=document.getElementById('ph').value.trim();
+  if(!t.value){err.textContent='Uyğun saat seçin.';return}
+  if(!nm){err.textContent='Adınızı yazın.';return}
+  if(ph.replace(/\D/g,'').length<9){err.textContent='Telefon nömrəsini tam yazın.';return}
+  err.textContent='';const dd=new Date(d.value);
+  document.getElementById('mx').textContent=`Yeni rezervasiya:\n👥 ${ppl} nəfər · ${zone}\n📅 ${dd.getDate()}.${String(dd.getMonth()+1).padStart(2,'0')}, ${t.value}\n👤 ${nm} — ${ph}`;
+  document.getElementById('modal').hidden=false;document.getElementById('mc').focus()});
+const close=()=>document.getElementById('modal').hidden=true;
+document.getElementById('mc').onclick=close;
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+</script>
+</body>
+</html>
