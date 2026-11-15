@@ -15,6 +15,8 @@ const i18n = {
         p2_title: 'Salon chatbot', p2_text: 'Try the assistant in the bottom-right corner — a live demo running on this page.',
         p3_title: 'Lead automation', p3_text: 'In progress: automatic Telegram notifications from a website form.',
         soon: 'Coming soon',
+        d1_text: 'Barbershop website: price list, barbers, opening hours and an online booking form.',
+        d2_text: 'Education center website: course filter, group schedule, teachers and parent sign-up.',
         process_title: 'How we work',
         st1_t: '1. Call', st1: 'Free 15-minute call to understand your needs.',
         st2_t: '2. Design', st2: 'First version ready in 2–3 days.',

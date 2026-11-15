@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ustad Barbershop — Bakı</title>
+<meta name="description" content="Ustad Barbershop: saç kəsimi, saqqal dizaynı, fade. Onlayn növbə.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Qaranlıq kömür + mis rəngi. Başlıqlar: dar, güclü; mətn: oxunaqlı. */
+:root{
+  --bg:#121110; --bg-2:#1a1816; --card:#201e1b; --line:#2e2a26;
+  --text:#f3ede4; --muted:#a59c90; --brass:#c8935a; --brass-2:#e2b37c; --ok:#5fbf7a;
+  --display:'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
+  --body:'Manrope', system-ui, -apple-system, sans-serif;
+  --r:14px;
+  color-scheme: dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);letter-spacing:.5px;line-height:1.02;text-wrap:balance}
+.eyebrow{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--brass);font-weight:700}
+:focus-visible{outline:2px solid var(--brass-2);outline-offset:3px;border-radius:6px}
+
+/* demo pill */
+.demo-pill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;
+  background:rgba(32,30,27,.92);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--muted);
+  font-size:.78rem;padding:7px 14px;border-radius:999px;white-space:nowrap}
+.demo-pill b{color:var(--brass-2)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(18,17,16,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:900;font-size:1.5rem;letter-spacing:1px}
+.logo svg{width:30px;height:30px}
+.nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--muted);font-weight:500}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 .95rem var(--body);
+  padding:13px 22px;border-radius:999px;transition:transform .15s,background .15s,box-shadow .15s}
+.btn:active{transform:scale(.97)}
+.btn-brass{background:var(--brass);color:#16120d;box-shadow:0 8px 24px rgba(200,147,90,.25)}
+.btn-brass:hover{background:var(--brass-2)}
+.btn-line{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-line:hover{border-color:var(--brass)}
+.nav .btn{padding:10px 18px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(700px 380px at 85% 10%,rgba(200,147,90,.18),transparent 60%),
+  repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 14px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(3rem,8vw,6.2rem);font-weight:900;text-transform:uppercase;margin:14px 0 18px}
+.hero h1 span{color:var(--brass)}
+.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:30rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted);margin-top:26px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(95,191,122,.18)}
+.dot.closed{background:#d9654b;box-shadow:0 0 0 4px rgba(217,101,75,.18)}
+
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 70px 26px 26px;position:relative}
+.pole{position:absolute;top:-14px;right:26px;width:26px;height:120px;border-radius:13px;border:3px solid #3a332c;
+  background:repeating-linear-gradient(135deg,#c8935a 0 10px,#f3ede4 10px 20px,#2f2a25 20px 30px);background-size:100% 42px;
+  animation:pole 2.4s linear infinite}
+@keyframes pole{to{background-position:0 42px}}
+.hero-card h3{font-size:1.6rem;margin-bottom:14px}
+.mini-list{list-style:none;display:grid;gap:10px}
+.mini-list li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.95rem}
+.mini-list li span:first-child{color:var(--muted)}
+.mini-list li b{font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;padding-top:20px;border-top:1px dashed var(--line)}
+.stats div{text-align:center}
+.stats b{display:block;font-family:var(--display);font-size:1.9rem;color:var(--brass-2)}
+.stats small{color:var(--muted);font-size:.75rem}
+
+/* sections */
+section{padding:88px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);text-transform:uppercase;font-weight:800}
+.sec-head p{color:var(--muted);max-width:26rem}
+
+/* price list (barber menu board) */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.item h3{font-family:var(--body);font-weight:700;font-size:1.05rem;letter-spacing:0;display:flex;align-items:center;gap:10px}
+.item .price{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--brass-2);font-variant-numeric:tabular-nums}
+.item p{grid-column:1/-1;color:var(--muted);font-size:.9rem}
+.item .time{font-size:.75rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-weight:500}
+.tag-hot{font-size:.7rem;background:var(--brass);color:#16120d;border-radius:999px;padding:2px 8px;font-weight:700}
+
+/* masters */
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.master{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.avatar{aspect-ratio:16/9;display:grid;place-items:center;position:relative;
+  background:linear-gradient(160deg,#2a2622,#171513)}
+.avatar span{font-family:var(--display);font-size:4.5rem;font-weight:900;color:var(--brass);opacity:.9}
+.avatar::after{content:"";position:absolute;inset:auto 0 0;height:4px;background:repeating-linear-gradient(90deg,var(--brass) 0 18px,transparent 18px 26px)}
+.master-body{padding:18px 20px 22px}
+.master-body h3{font-size:1.6rem}
+.master-body .role{color:var(--brass);font-size:.85rem;font-weight:600}
+.master-body p{color:var(--muted);font-size:.9rem;margin-top:8px}
+.stars{color:var(--brass-2);letter-spacing:2px;font-size:.85rem;margin-top:10px}
+
+/* booking */
+.booking{background:var(--bg-2);border-block:1px solid var(--line)}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.book-info h2{font-size:clamp(2.2rem,5vw,3.6rem);text-transform:uppercase}
+.book-info p{color:var(--muted);margin:14px 0 24px}
+.hours{list-style:none;display:grid;gap:8px;font-size:.95rem}
+.hours li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.hours li.today{color:var(--brass-2);font-weight:700}
+form.book{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;color:var(--muted);font-weight:600}
+.field input,.field select{background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:13px 14px;font:500 .95rem var(--body);width:100%}
+.field input:focus,.field select:focus{outline:none;border-color:var(--brass)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--text);padding:9px 14px;border-radius:999px;cursor:pointer;font:600 .85rem var(--body);font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--brass);color:#16120d;border-color:var(--brass)}
+.chip:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.total{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px dashed var(--line)}
+.total b{font-family:var(--display);font-size:1.8rem;color:var(--brass-2)}
+.err{color:#e8826b;font-size:.85rem;min-height:1.2em}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.review p{font-size:.98rem}
+.review footer{margin-top:16px;display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.c-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:10px}
+.c-card h3{font-size:1.7rem}
+.c-card p{color:var(--muted)}
+.c-card .btn{justify-self:start;margin-top:8px}
+footer.site{padding:36px 0 90px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.modal-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;max-width:440px;width:100%;animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.95);opacity:0}}
+.modal-box h3{font-size:2rem;margin-bottom:6px}
+.modal-box pre{white-space:pre-wrap;font:500 .9rem var(--body);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0;color:var(--text)}
+.modal-box .note{color:var(--muted);font-size:.85rem}
+.modal-box .btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+
+.reveal{animation:rise .7s ease both}
+@keyframes rise{from{transform:translateY(14px);opacity:.001}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (max-width:860px){
+  .nav-links{display:none}
+  .hero{padding:56px 0 48px}
+  .hero .wrap,.book-grid,.contact{grid-template-columns:1fr}
+  .menu{grid-template-columns:1fr}
+  .masters,.reviews{grid-template-columns:1fr}
+  section{padding:64px 0}
+}
+@media (max-width:420px){.row2{grid-template-columns:1fr}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-pill">Demo sayt · hazırladı <b>nihat.dev</b></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Ustad Barbershop">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="9" cy="23" r="5" stroke="#c8935a" stroke-width="2.5"/><circle cx="23" cy="23" r="5" stroke="#c8935a" stroke-width="2.5"/><path d="M12.5 19.5 25 3M19.5 19.5 7 3" stroke="#f3ede4" stroke-width="2.5" stroke-linecap="round"/></svg>
+      USTAD
+    </a>
+    <nav class="nav-links">
+      <a href="#xidmetler">Xidmətlər</a><a href="#ustalar">Ustalar</a><a href="#reyler">Rəylər</a><a href="#elaqe">Əlaqə</a>
+    </nav>
+    <a href="#novbe" class="btn btn-brass">Növbə al</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Barbershop · Nizami, Bakı</span>
+      <h1>Kəsim <span>sənin</span> imzandır</h1>
+      <p class="lead">Klassik və müasir kəsimlər, isti dəsmal ilə saqqal dizaynı. Növbəni 30 saniyəyə al — gözləmədən otur.</p>
+      <div class="hero-cta">
+        <a href="#novbe" class="btn btn-brass">Onlayn növbə al →</a>
+        <a href="#xidmetler" class="btn btn-line">Qiymətlər</a>
+      </div>
+      <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">Açığıq</span></div>
+    </div>
+    <aside class="hero-card reveal" style="animation-delay:.12s">
+      <div class="pole" aria-hidden="true"></div>
+      <h3>Ən çox seçilənlər</h3>
+      <ul class="mini-list">
+        <li><span>Saç kəsimi</span><b>15 AZN</b></li>
+        <li><span>Fade</span><b>18 AZN</b></li>
+        <li><span>Saç + saqqal</span><b>25 AZN</b></li>
+        <li><span>Uşaq kəsimi</span><b>10 AZN</b></li>
+      </ul>
+      <div class="stats">
+        <div><b>8</b><small>il təcrübə</small></div>
+        <div><b>4.9</b><small>reytinq</small></div>
+        <div><b>12K+</b><small>kəsim</small></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="xidmetler">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Xidmətlər</h2>
+      <p>Bütün qiymətlər yekundur. Yuyulma və üslublama daxildir.</p>
+    </div>
+    <div class="menu" id="menu"></div>
+  </div>
+</section>
+
+<section id="ustalar" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Ustalar</h2>
+      <p>Hər biri öz üslubunda usta. Növbə alarkən istədiyini seç.</p>
+    </div>
+    <div class="masters" id="masters"></div>
+  </div>
+</section>
+
+<section id="novbe" class="booking">
+  <div class="wrap book-grid">
+    <div class="book-info">
+      <span class="eyebrow">Onlayn növbə</span>
+      <h2>Vaxtını seç, gəl otur</h2>
+      <p>Müraciətin dərhal WhatsApp-a düşür, usta 5 dəqiqə ərzində təsdiqləyir.</p>
+      <ul class="hours" id="hours"></ul>
+    </div>
+    <form class="book" id="bookForm" novalidate>
+      <div class="field">
+        <label for="svc">Xidmət</label>
+        <select id="svc" required></select>
+      </div>
+      <div class="field">
+        <label for="mst">Usta</label>
+        <select id="mst"><option value="">Fərqi yoxdur</option></select>
+      </div>
+      <div class="field">
+        <label for="day">Gün</label>
+        <select id="day"></select>
+      </div>
+      <div class="field">
+        <label>Saat</label>
+        <div class="chips" id="slots" role="group" aria-label="Saat seçimi"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="nm">Adın</label><input id="nm" autocomplete="name" placeholder="Məs. Elvin" required></div>
+        <div class="field"><label for="ph">Telefon</label><input id="ph" type="tel" autocomplete="tel" placeholder="050 123 45 67" required></div>
+      </div>
+      <div class="total"><span>Cəmi</span><b id="total">15 AZN</b></div>
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn btn-brass" type="submit">Növbəni təsdiqlə</button>
+    </form>
+  </div>
+</section>
+
+<section id="reyler">
+  <div class="wrap">
+    <div class="sec-head"><h2>Rəylər</h2><p>Google-da 4.9 ★ — 320+ rəy (demo məlumat)</p></div>
+    <div class="reviews">
+      <article class="review"><div class="stars">★★★★★</div><p>Fade-i Rauf elə kəsdi ki, iş yerində hamı harada kəsdirdiyimi soruşdu. Onlayn növbə çox rahatdır.</p><footer><span>Tural M.</span><span>2 həftə əvvəl</span></footer></article>
+      <article class="review"><div class="stars">★★★★★</div><p>İsti dəsmalla saqqal — ayrıca bir zövqdür. Gözləmədim, vaxtında oturdum.</p><footer><span>Kamran Ə.</span><span>1 ay əvvəl</span></footer></article>
+      <article class="review"><div class="stars">★★★★★</div><p>Oğlumu ilk dəfə gətirdim, səbirlə və gülə-gülə kəsdilər. Artıq daimi müştəriyik.</p><footer><span>Rəşad Q.</span><span>1 ay əvvəl</span></footer></article>
+    </div>
+  </div>
+</section>
+
+<section id="elaqe" style="padding-top:0">
+  <div class="wrap contact">
+    <div class="c-card">
+      <span class="eyebrow">Ünvan</span>
+      <h3>Nizami küç. 45, Bakı</h3>
+      <p>Sahil metrosundan 4 dəqiqəlik piyada. Yaxınlıqda ödənişsiz parkinq var.</p>
+      <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Nizami+k%C3%BC%C3%A7%C9%99si+Bak%C4%B1" target="_blank" rel="noopener">Xəritədə aç ↗</a>
+    </div>
+    <div class="c-card">
+      <span class="eyebrow">Əlaqə</span>
+      <h3>+994 50 000 00 00</h3>
+      <p>Zəng et, WhatsApp-a yaz və ya birbaşa onlayn növbə al.</p>
+      <a class="btn btn-brass" href="#novbe">Növbə al</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site"><div class="wrap"><span>© 2026 Ustad Barbershop — demo layihə</span><span>Sayt: nihat.dev</span></div></footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <h3 id="mTitle">Növbən hazırdır ✂️</h3>
+    <p class="note">Real saytda bu mesaj avtomatik olaraq bərbərxananın WhatsApp-ına göndərilir:</p>
+    <pre id="mText"></pre>
+    <p class="note">Bu demo saytdır — mesaj heç yerə göndərilmədi.</p>
+    <div class="btns"><button class="btn btn-brass" id="mClose" type="button">Bağla</button></div>
+  </div>
+</div>
+
+<script>
+const services=[
+  {n:'Saç kəsimi',p:15,t:40,d:'Məsləhət, yuyulma, kəsim və üslublama'},
+  {n:'Fade',p:18,t:45,d:'Skin, low, mid və ya high fade — keçidlər tam hamar',hot:true},
+  {n:'Saqqal dizaynı',p:12,t:25,d:'Forma, kontur, isti dəsmal və yağ'},
+  {n:'Saç + saqqal',p:25,t:60,d:'Tam paket — ən çox seçilən',hot:true},
+  {n:'Ülgüclə qırxım',p:12,t:30,d:'Klassik ülgüc, isti və soyuq dəsmal'},
+  {n:'Uşaq kəsimi',p:10,t:30,d:'12 yaşa qədər, səbirli usta ilə'},
+  {n:'Saç boyama',p:30,t:60,d:'Ağ saçların örtülməsi, təbii ton'},
+  {n:'Üz baxımı',p:20,t:30,d:'Təmizləmə, maska, qara nöqtələrə qarşı'}
+];
+const masters=[
+  {n:'Rauf',i:'R',r:'Baş usta · Fade ustası',d:'12 il təcrübə. Kəskin keçidlər və müasir formalar.'},
+  {n:'Elnur',i:'E',r:'Saqqal ustası',d:'Klassik ülgüc və isti dəsmal ritualının ustası.'},
+  {n:'Vüsal',i:'V',r:'Klassik kəsimlər',d:'Ofis üslubu, uşaq kəsimləri, sakit və səbirli.'}
+];
+const hours=[['Bazar ertəsi','10:00–21:00'],['Çərşənbə axşamı','10:00–21:00'],['Çərşənbə','10:00–21:00'],['Cümə axşamı','10:00–21:00'],['Cümə','10:00–21:00'],['Şənbə','10:00–22:00'],['Bazar','11:00–19:00']];
+const dayNames=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'];
+
+// menu
+document.getElementById('menu').innerHTML=services.map(s=>`
+  <div class="item"><h3>${s.n} ${s.hot?'<span class="tag-hot">Populyar</span>':''}</h3>
+  <span class="price">${s.p} ₼</span><p>${s.d} · <span class="time">${s.t} dəq</span></p></div>`).join('');
+// masters
+document.getElementById('masters').innerHTML=masters.map(m=>`
+  <article class="master"><div class="avatar"><span>${m.i}</span></div>
+  <div class="master-body"><span class="role">${m.r}</span><h3>${m.n}</h3><p>${m.d}</p><div class="stars">★★★★★</div></div></article>`).join('');
+
+// hours + open status
+const now=new Date();
+const todayIdx=(now.getDay()+6)%7; // Mon=0
+document.getElementById('hours').innerHTML=hours.map((h,i)=>`<li class="${i===todayIdx?'today':''}"><span>${h[0]}</span><span>${h[1]}</span></li>`).join('');
+(function(){
+  const [o,c]=hours[todayIdx][1].split('–').map(x=>{const[a,b]=x.split(':');return +a*60+ +b});
+  const m=now.getHours()*60+now.getMinutes(); const open=m>=o&&m<c;
+  const dot=document.getElementById('statusDot'), t=document.getElementById('statusText');
+  if(open){t.textContent='İndi açığıq · '+hours[todayIdx][1].split('–')[1]+'-dək'}
+  else{dot.classList.add('closed');t.textContent='Hazırda bağlıyıq · sabah '+hours[(todayIdx+1)%7][1].split('–')[0]+'-da açılırıq'}
+})();
+
+// form
+const svc=document.getElementById('svc'), mst=document.getElementById('mst'), day=document.getElementById('day'), slots=document.getElementById('slots');
+svc.innerHTML=services.map((s,i)=>`<option value="${i}">${s.n} — ${s.p} AZN</option>`).join('');
+mst.innerHTML+=masters.map(m=>`<option>${m.n}</option>`).join('');
+for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);
+  const label=i===0?'Bu gün':i===1?'Sabah':dayNames[d.getDay()];
+  day.innerHTML+=`<option value="${i}">${label}, ${d.getDate()}.${String(d.getMonth()+1).padStart(2,'0')}</option>`}
+let chosen='';
+function seed(n){let x=Math.sin(n)*10000;return x-Math.floor(x)}
+function renderSlots(){
+  const di=+day.value; const d=new Date(now); d.setDate(now.getDate()+di);
+  const idx=(d.getDay()+6)%7; const [o,c]=hours[idx][1].split('–').map(x=>+x.split(':')[0]);
+  slots.innerHTML=''; chosen='';
+  for(let h=o;h<c;h++){for(const mm of ['00','30']){
+    const t=`${String(h).padStart(2,'0')}:${mm}`; const b=document.createElement('button');
+    b.type='button';b.className='chip';b.textContent=t;b.setAttribute('aria-pressed','false');
+    const past=di===0&&(h*60+ +mm)<=now.getHours()*60+now.getMinutes();
+    const busy=seed(di*100+h*2+(mm==='30'))<.3;
+    if(past||busy)b.disabled=true;
+    b.onclick=()=>{slots.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');chosen=t};
+    slots.appendChild(b);}}
+}
+day.onchange=renderSlots; renderSlots();
+svc.onchange=()=>document.getElementById('total').textContent=services[svc.value].p+' AZN';
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault(); const err=document.getElementById('err');
+  const nm=document.getElementById('nm').value.trim(), ph=document.getElementById('ph').value.trim();
+  if(!chosen){err.textContent='Saat seç.';return}
+  if(!nm){err.textContent='Adını yaz.';return}
+  if(ph.replace(/\D/g,'').length<9){err.textContent='Telefon nömrəsini tam yaz.';return}
+  err.textContent='';
+  const s=services[svc.value];
+  document.getElementById('mText').textContent=`Salam! Yeni növbə:\n👤 ${nm} (${ph})\n✂️ ${s.n} — ${s.p} AZN\n💈 Usta: ${mst.value||'Fərqi yoxdur'}\n📅 ${day.options[day.selectedIndex].text}, ${chosen}`;
+  document.getElementById('modal').hidden=false; document.getElementById('mClose').focus();
+});
+document.getElementById('mClose').onclick=()=>document.getElementById('modal').hidden=true;
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modal').hidden=true});
+</script>
+</body>
+</html>
